@@ -407,42 +407,6 @@ router.get('/game1', function(req, res){//this is called when "Play Game is hit"
 
 /*end game*/
 
-/*Adding last schema for emojis*/
-router.get('/pickYourEmojis', function(req, res){
-  res.render('pickYourEmojis');
-});
-
-router.post('/pickYourEmojis/add', function(req, res, next){
-    var newFaveEmojis = new FaveEmojis({
-        emojiHTML: req.body.check,
-    });
-
-    newFaveEmojis.save(function(err, em, count){
-      if(err){
-        console.log(err);
-        res.redirect('/pickYourEmojis');
-      }else{
-        res.redirect('/showYourFaves');
-      }
-    });
-});
-
-router.get('/showYourFaves', function(req, res){
-  FaveEmojis.find({}, function(err, ems, count){
-    // console.log(ems[0].emojiHTML);
-    var i;
-    var currFaveinDB = [];
-    for(i = 0; i < ems.length;i++){
-      currFaveinDB.push(ems[i].emojiHTML);
-    }
-    res.render('showYourFaves', {ems:currFaveinDB});
-  });
-});
-
-
-
-/*End adding last schema for emojis*/
-
 
 
 module.exports = router;
