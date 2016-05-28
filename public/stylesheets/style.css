@@ -1,0 +1,123 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+/*hideMe d3*/
+
+.hideMeD3 {
+	display: none;
+}
+
+/*navbar*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #c0d0e0;
+}
+circle {
+	fill: none;
+	stroke: #398FBD;
+}
+
+.linavBar {
+    float: left;
+    border-right:1px solid #bbb;
+}
+
+.liMeep{
+	/*float: left;
+	padding: 10px;*/
+	-webkit-column-count: 5; /* Chrome, Safari, Opera */
+    -moz-column-count: 5; /* Firefox */
+    column-count: 5;
+}
+
+ol {
+	float: left;
+	padding: 30px;
+
+}
+
+li:last-child {
+    border-right: none;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+/**/
+
+
+
+.emojigametitle{
+  width: 500px;
+}
+
+.imgfooter{
+  width:250px;
+}
+
+.magicInfo{
+  display: none;
+}
+
+*{
+  text-align: center;
+  font-family: sans-serif;
+}
+thead{
+	background-color: #00FFFF;
+  text-align: center;
+  font-weight: bold;
+}
+
+td{
+	padding:15px;
+  text-align: center;
+  transition: all 0.3s;  /* Simple transition for hover effect */
+}
+
+.randomStyle{
+	font: serif;
+}
+
+.boldtext{
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+	align: center;
+}
+.notloaded{
+  align-items: center;
+}
+
+.result{
+  font-family: cursive;
+}
+
+tr:nth-child(odd) td { background: #FEFEFE; }
+
+tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */

@@ -1,0 +1,50 @@
+<br>
+<br>
+Just an FYI, to filter, you must type in the artist name EXACTLY like how it is displayed
+<br>
+<br>
+<form action="" method="get">
+	Artist: <input type="text" id="artist" name="artist" value="{{artist}}">
+	<input id="filterBtn" type="submit" value="Filter">
+</form>
+
+{{#if artist}}
+<p>
+
+Showing only songs by: <span class="highlight">{{artist}}</span>
+</p>
+{{/if}}
+<table align="center">
+	<thead>
+		<th>Title</th>
+		<th>Artist</th>
+	</thead>
+	<tbody id="song-list">
+		{{#each song}}
+		<tr>
+			<td>{{title}}</td>
+			<td>{{artist}}</td>
+		</tr>
+		{{/each}}
+		{{#each songs}}
+		<tr>
+			<td>{{title}}</td>
+			<td>{{artist}}</td>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
+
+
+<form id="create-form" method="POST" action="">
+	<div>
+		<label for="songTitle">Title:</label>
+		<input type="text" name="songTitle" id="songTitle" value="">
+	</div>
+	<div>
+		<label for="songArtist">Artist:</label>
+		<input type="text" name="songArtist" id="songArtist" value="">
+	</div>
+
+	<input type="submit" name="addBtn" id="addBtn" value="Add Song">
+</form>
