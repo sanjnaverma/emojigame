@@ -23,11 +23,6 @@ var ScoreCalc = new mongoose.Schema({
 });
 
 
-var FaveEmojis = mongoose.Schema({
-  emojiHTML: {type: String},
-});
-
-
 
 
 var UserSchema = new mongoose.Schema({ });
