@@ -22,9 +22,6 @@ var ScoreCalc = new mongoose.Schema({
     score: {type: Number}
 });
 
-
-
-
 var UserSchema = new mongoose.Schema({ });
 // NOTE: we're using passport-local-mongoose as a plugin
 // our schema for user looks pretty thin... but that's because
