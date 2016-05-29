@@ -31,13 +31,13 @@ circle {
     border-right:1px solid #bbb;
 }
 
-.liMeep{
+/*.liMeep{
 	/*float: left;
 	padding: 10px;*/
-	-webkit-column-count: 5; /* Chrome, Safari, Opera */
-    -moz-column-count: 5; /* Firefox */
-    column-count: 5;
-}
+	/*-webkit-column-count: 5; /* Chrome, Safari, Opera */
+  /*  -moz-column-count: 5; /* Firefox */
+  /*  column-count: 5;
+}*/
 
 ol {
 	float: left;

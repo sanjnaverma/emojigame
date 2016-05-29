@@ -7,26 +7,20 @@ var passport = require('passport');
 var request = require('request');
 var lyrFetchAPI = require('lyrics-fetcher');
 
-
-
 var Song = mongoose.model('Song');
 var User = mongoose.model('User');
 var Lyrics = mongoose.model('Lyrics');
-var FaveEmojis = mongoose.model('FaveEmojis');
-
+var EmojiDefs = mongoose.model('EmojiDefs');
+var Words = mongoose.model('Words');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', {layout:'layout-login'} );
-  // res.redirect('/songs');
 });
 
 router.get('/index', function(req, res, next) {
   res.render('index', {layout:'layout-login'} );
-  // res.redirect('/songs');
 });
-
-
 
 /*Start Login Process*/
 
@@ -153,10 +147,6 @@ router.post('/api/songs', function(req, res) {
       title: songTitleToBeNormalized,
       artist: artistToBeNormalized
   });
-  /*.save(function(err, song, count) {
-    res.json(song);
-  });*/
-
   var curtitle = songTitleToBeNormalized;
   var curartist= artistToBeNormalized;
 
@@ -211,16 +201,12 @@ router.post('/api/songs', function(req, res) {
     }
   });
 });
-
   /*End adding lyrics to the lyrics schema*/
 
   addMe.save(function(err, song, count){
     res.json(song);
   })
-
 });
-
-
 /*End AJAX*/
 
 /*start game*/
@@ -239,28 +225,17 @@ router.get('/win', function(req, res){
 
 
 router.post('/game1', function(req, res){
-
-
   var userGuess = req.body.songGuess;
   var answer = req.body.magicLyrics;
-
   /*normalize the strings*/
   userGuess = userGuess.split(" ");
   userGuess.forEach(function(ele, ind){
-  	// console.log(ele);
   	ele = ele.toLowerCase();
-  	// console.log(ele);
   	userGuess[ind] = ele;
-
   });
   userGuess = userGuess.join(" ");
-  console.log(userGuess);
-
-
-  console.log(answer);
-
+  // console.log(userGuess);
   // console.log(answer);
-  // res.send(answer);
   Lyrics.findOne({"emojiLyrics":answer}, function(err, lyrics, count){
     if(err){
       res.send(err);
@@ -271,32 +246,10 @@ router.post('/game1', function(req, res){
       }else{
         // res.send("youre wrong");
         res.render('game1', {lost: "Sorry that was the wrong guess, try again!", magicLyrics: answer});
-
       }
-
       // res.send(lyrics);
-
     }
   });
-  // Lyrics.findOne({"title":userGuess}, function(err, lyrics, count){
-  //
-  //   Lyrics.findOne({"emojiLyrics":answer}, function)
-  //   console.log("*******");
-  //   // var correctanswer = answer;
-  //   // console.log(correctanswer);
-  //   console.log(lyrics.title);
-  //   if(answer == lyrics.emojiLyrics){
-  //     res.send("yay");
-  //   }else{
-  //     res.send("boo");
-  //   }
-  //   // console.log(lyrics.lyrics);
-  //   // if(lyrics){
-  //   //   res.send("yay");
-  //   // }else{
-  //   //   res.send("boo");
-  //   // }
-  // });
 });
 
 var globalLyrics;
@@ -399,14 +352,23 @@ router.get('/game1', function(req, res){//this is called when "Play Game is hit"
 
         res.render('game1', {'magicLyrics':lyricsArray, 'originalLyrics':originalLyrics});// {'layout':"gamelayout"});
       })
-
     }
-
   });// end songs.find
 });
 
 /*end game*/
+router.get('/pickYourEmojis', function(req, res){
+  res.render('pickYourEmojis');
+});
 
+router.post('/pickYourEmojis', function(req, res){
+  var chosenEmo = {};
 
+  EmojiDefs.find(chosenEmo, function(err, songs, count) {
+    // console.log("look at the songs");
+    // console.log(songs);
+    res.render('songs', {'songs': songs, searchExists: searchExists, artist: req.query.artist });
+  });
+});
 
 module.exports = router;

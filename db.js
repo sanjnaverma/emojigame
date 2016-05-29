@@ -18,9 +18,17 @@ var Lyrics = new mongoose.Schema({
     emojiLyrics: {type: String}
 });
 
-var ScoreCalc = new mongoose.Schema({
-    score: {type: Number}
+var Words = new mongoose.Schema({
+    definition: String
 });
+
+var EmojiDefs = new mongoose.Schema({
+    emoticon: {type: String},
+    meanings: [Words]
+});
+
+
+
 
 var UserSchema = new mongoose.Schema({ });
 // NOTE: we're using passport-local-mongoose as a plugin
@@ -31,8 +39,8 @@ UserSchema.plugin(passportLocalMongoose);
 mongoose.model('User', UserSchema);
 mongoose.model('Song', Song);
 mongoose.model('Lyrics', Lyrics);
-mongoose.model('FaveEmojis', FaveEmojis);
-
+mongoose.model('EmojiDefs', EmojiDefs);
+mongoose.model('Words', Words);
 
 
 mongoose.connect('mongodb://localhost/finalproj');
